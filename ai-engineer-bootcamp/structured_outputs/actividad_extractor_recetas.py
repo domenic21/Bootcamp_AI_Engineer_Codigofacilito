@@ -35,6 +35,9 @@ class Receta(BaseModel):
     dificultad: str = Field(description="Nivel de dificultad: fácil, media o difícil.")
     ingredientes: list[Ingrediente] = Field(description="Lista de ingredientes.")
     pasos: list[str] = Field(description="Pasos de preparación en orden.")
+    porciones: int = Field(description="Número de porciones.")
+
+
 
 
 print("=" * 60)
@@ -64,7 +67,7 @@ picoso te guste. Primero hierves los tomates con el chile y el ajo como
 15 minutos, luego los licuas con un poco de agua. En una sartén con
 aceite fríes la salsa como 5 minutos, le pones sal, y ya al final
 echas los totopos y mezclas bien. Se sirven con crema, queso y cebolla.
-En total como en 30 minutos los tienes listos, es bastante fácil.
+En total como en 30 minutos los tienes listos, es bastante fácil. Porciones 2.
 """
 
 
@@ -85,7 +88,7 @@ def extraer_receta(texto: str) -> Receta:
 def imprimir_receta(receta: Receta) -> None:
     """Imprime una receta formateada."""
     print(f"\n  {receta.titulo.upper()}")
-    print(f"  Tiempo: {receta.tiempo_minutos} min | Dificultad: {receta.dificultad}")
+    print(f"  Tiempo: {receta.tiempo_minutos} min | Dificultad: {receta.dificultad} | Porciones: {receta.porciones}")
     print("-" * 50)
     print("  Ingredientes:")
     for ing in receta.ingredientes:
